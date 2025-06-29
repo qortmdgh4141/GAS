@@ -7,5 +7,5 @@ Official code repository for the ICML 2025 paper
 
 ---
 
-🚧 **Code release scheduled for June 27, 2025 (KST).**  
+🚧 **Code release scheduled for June 30, 2025 (KST).**  
 Please check back soon or follow the project page for updates.
