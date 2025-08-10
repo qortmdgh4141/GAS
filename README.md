@@ -1,9 +1,13 @@
 # Graph-Assisted Stitching for Offline Hierarchical Reinforcement Learning
+
 <p align="left">
   <a href="https://www.arxiv.org/abs/2506.07744"><img src="https://img.shields.io/badge/Paper-arXiv-blueviolet?style=for-the-badge&logo=arxiv&logoColor=white"></a>
   <a href="https://qortmdgh4141.github.io/projects/GAS/"><img src="https://img.shields.io/badge/Project%20Page-Website-blueviolet?style=for-the-badge&logo=github"></a>
   <a href="https://www.youtube.com/watch?v=6mxRlbn2_6s"><img src="https://img.shields.io/badge/Talk%20(10min)-YouTube-blueviolet?style=for-the-badge&logo=youtube"></a>
 </p>
+
+<img src="https://qortmdgh4141.github.io/projects/GAS/media/figures/icml2025_gas_overview_v2.png" width="100%">
+<img src="https://qortmdgh4141.github.io/projects/GAS/media/figures/icml2025_state_barplot.png" width="100%">
 
 ## Overview
 This is the official implementation of **[Graph-Assisted Stitching](https://www.arxiv.org/abs/2506.07744/)** (**GAS**)
