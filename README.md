@@ -30,7 +30,7 @@ pip install -e .
 ```
 
 ## Examples 
-### State-Based Environmnets
+### State-Based Environments
 * Stage 1: Pre-Training Temporal Distance Representation
 ```
 # GAS on antmaze-giant-navigate
