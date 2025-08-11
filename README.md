@@ -187,10 +187,6 @@ python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-
 </details>
 
 
-## License
-MIT
-
-
 ## Acknowledgments
 This codebase is inspired by or partly uses code from the following repositories:
 - [D4RL](https://github.com/Farama-Foundation/D4RL) for the dataset structure and the kitchen environment.
