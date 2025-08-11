@@ -40,7 +40,7 @@ pip install -e .
 
 ## Quick start
 
-The default hyperparameters in the code are set based on the `antmaze-giant-stitch` task.
+The default hyperparameters in the code are set based on the `antmaze-giant-stitch` task:
 
 ```
 # Stage 1: Pre-Training Temporal Distance Representation
