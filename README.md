@@ -6,6 +6,8 @@
   <a href="https://www.youtube.com/watch?v=6mxRlbn2_6s"><img src="https://img.shields.io/badge/Talk%20(10min)-YouTube-blueviolet?style=for-the-badge&logo=youtube"></a>
 </p>
 
+:bell: We are happy to announce that GAS was accepted at **ICML 2025**. :bell:
+
 <img src="https://qortmdgh4141.github.io/projects/GAS/media/figures/icml2025_gas_overview_v2.png" width="100%">
 <img src="https://qortmdgh4141.github.io/projects/GAS/media/figures/icml2025_state_barplot.png" width="100%">
 
