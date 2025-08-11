@@ -57,7 +57,7 @@ def evaluate_with_graph(agent, key_graph, env, env_name, dataset, task_id, eval_
                     final_goal_on = True
                     cur_obs_goal = phi_goal
                 else:
-                    cur_obs_goal = shortest_path[cur_node_idx+1]
+                    cur_obs_goal = shortest_path[cur_node_idx]
         
             skills = (cur_obs_goal - phi_obs) / (np.linalg.norm(cur_obs_goal - phi_obs) + epsilon)                    
             action = actor_fn(observations=observation, goals=skills, temperature=0.0)
