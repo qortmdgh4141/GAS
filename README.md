@@ -38,31 +38,25 @@ cd d4rl
 pip install -e .
 ```
 
+## Quick start
 
-## Examples 
-#### Stage 1: Pre-Training Temporal Distance Representation
+The default hyperparameters in the code are set based on the `antmaze-giant-stitch` task.
+
 ```
-# GAS on antmaze-giant-stitch
+# Stage 1: Pre-Training Temporal Distance Representation
 python pretrain_tdr.py
-```
 
-#### Stage 2: TD-aware Graph Construction
-```
-# GAS on antmaze-giant-stitch
+# Stage 2: TD-aware Graph Construction
 python construct_graph.py --tdr_path PATH_TO_TDR_CHECKPOINT/params_1000000.pkl
-```
 
-#### Stage 3: Learning Low-level Policy
-```
-# GAS on antmaze-giant-stitch
+# Stage 3: Learning Low-level Policy
 python train_policy.py --tdr_path PATH_TO_TDR_CHECKPOINT/params_1000000.pkl
-```
 
-#### Stage 4: Task Planning and Execution
-```
-# GAS on antmaze-giant-stitch
+# Stage 4: Task Planning and Execution
 python evaluate_gas.py --keygraph_path PATH_TO_KEYGRAPH_CHECKPOINT/keygraph.pkl --policy_path PATH_TO_POLICY_CHECKPOINT/params_1000000.pkl
 ```
+
+We provide the complete list of the exact command-line flags used to reproduce the main results in the paper:
 
 <details>
 <summary><b>Click to expand the full list of commands (state-based environments)</b></summary>
