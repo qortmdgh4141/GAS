@@ -1,7 +1,6 @@
 import d4rl
 import numpy as np
 
-from copy import deepcopy
 from dm_control.mujoco import engine
 
 from O_utils.datasets import Dataset
@@ -41,13 +40,13 @@ def kitchen_set_obs_and_goal(env, env_name, dataset, task_id, seed):
     observation = env.reset(seed)
     
     if env_name in ['kitchen-partial-v0']: 
-        goal_obs = observation[30:][9:]
+        goal_robot_state = np.array([-2.4308119e+00, -1.4440080e+00, 1.0221981e+00, -1.7869282e+00, 1.8872257e-01, 1.6170777e+00, 1.2863032e+00, 2.5421469e-02, 7.4267522e-03], dtype=np.float32)
+        goal_object_state = observation[30:][9:]
+        goal = np.concatenate([goal_robot_state, goal_object_state], axis=0).astype(np.float32)
         observation = observation[:30]
-        goal = deepcopy(dataset['observations'][121284])  
-        goal[9:] = goal_obs
     else:
         raise NotImplementedError
-    
+        
     return env, observation, goal
 
 
