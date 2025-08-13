@@ -14,7 +14,7 @@
 
 ## Overview
 
-This is the official implementation of **[Graph-Assisted Stitching](https://www.arxiv.org/abs/2506.07744/)** (**GAS**)
+This is the official implementation of **[Graph-Assisted Stitching](https://arxiv.org/abs/2506.07744)** (**GAS**)
 
 See the [project page](https://qortmdgh4141.github.io/projects/GAS/) for more details.
 
