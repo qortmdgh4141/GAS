@@ -40,6 +40,7 @@ cd d4rl
 pip install -e .
 ```
 
+
 ## Quick start
 
 The default hyperparameters in the code are set based on the `antmaze-giant-stitch` task:
@@ -186,6 +187,41 @@ python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-
 ```
 </details>
 
+## Pretrained Checkpoints
+
+Official pretrained checkpoints are hosted on 🤗 Hugging Face:  
+➡️ https://huggingface.co/qortmdgh4141/GAS
+
+Each environment provides a policy checkpoint (`params_*.pkl`) and a key graph (`keygraph.pkl`).
+
+| Environment | Policy | KeyGraph |
+| --- | --- | --- |
+| antmaze-giant-navigate | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/params_1000000.pkl) | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/keygraph.pkl) |
+| antmaze-giant-stitch   | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/params_1000000.pkl)   | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/keygraph.pkl) |
+| antmaze-large-explore  | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/params_1000000.pkl) | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/keygraph.pkl) |
+| kitchen-partial        | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/params_500000.pkl)         | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/keygraph.pkl) |
+| scene-play             | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/params_1000000.pkl)            | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/keygraph.pkl) |
+
+**Programmatic download (Python):**
+```python
+from huggingface_hub import hf_hub_download
+
+repo = "qortmdgh4141/GAS"
+files = [
+    "antmaze-giant-navigate/params_1000000.pkl",
+    "antmaze-giant-navigate/keygraph.pkl",
+    "antmaze-giant-stitch/params_1000000.pkl",
+    "antmaze-giant-stitch/keygraph.pkl",
+    "antmaze-large-explore/params_1000000.pkl",
+    "antmaze-large-explore/keygraph.pkl",
+    "kitchen-partial/params_500000.pkl",
+    "kitchen-partial/keygraph.pkl",
+    "scene-play/params_1000000.pkl",
+    "scene-play/keygraph.pkl",
+]
+for f in files:
+    hf_hub_download(repo_id=repo, filename=f, local_dir="checkpoints")
+```  
 
 ## Acknowledgments
 This codebase is inspired by or partly uses code from the following repositories:
