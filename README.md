@@ -203,6 +203,5 @@ Special thanks to [Seohong Park](https://seohong.me/) for providing a JAX-based 
     author={Seungho Baek and Taegeon Park and Jongchan Park and Seungjun Oh and Yusung Kim},
     booktitle={International Conference on Machine Learning (ICML)},
     year={2025},
-    }
 }
 ```  
