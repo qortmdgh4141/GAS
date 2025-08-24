@@ -189,18 +189,18 @@ python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-
 
 ## Pretrained Checkpoints
 
-Official pretrained checkpoints are hosted on 🤗 Hugging Face:  
-➡️ https://huggingface.co/qortmdgh4141/GAS
+Official GAS checkpoints are available on our [HuggingFace page](https://huggingface.co/qortmdgh4141/GAS) 🤗:
 
-Each environment provides a policy checkpoint (`params_*.pkl`) and a key graph (`keygraph.pkl`).
+For each released environment, we provide a `keygraph.pkl` (TD-aware graph) and a `params_*.pkl` (TDR, value/critic, and low-level policy).
 
-| Environment | Policy | KeyGraph |
+| Environment | Graph | Policy |
 | --- | --- | --- |
-| antmaze-giant-navigate | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/params_1000000.pkl) | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/keygraph.pkl) |
-| antmaze-giant-stitch   | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/params_1000000.pkl)   | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/keygraph.pkl) |
-| antmaze-large-explore  | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/params_1000000.pkl) | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/keygraph.pkl) |
-| kitchen-partial        | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/params_500000.pkl)         | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/keygraph.pkl) |
-| scene-play             | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/params_1000000.pkl)            | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/keygraph.pkl) |
+| antmaze-giant-navigate | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/keygraph.pkl) | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/params_1000000.pkl) |
+| antmaze-giant-stitch   | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/keygraph.pkl)   | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/params_1000000.pkl) |
+| antmaze-large-explore  | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/keygraph.pkl) | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/params_1000000.pkl) |
+| scene-play             | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/keygraph.pkl)            | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/params_1000000.pkl) 
+| kitchen-partial        | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/keygraph.pkl)       | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/params_500000.pkl) |
+
 
 **Programmatic download (Python):**
 ```python
