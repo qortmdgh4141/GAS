@@ -40,7 +40,6 @@ cd d4rl
 pip install -e .
 ```
 
-
 ## Quick start
 
 The default hyperparameters in the code are set based on the `antmaze-giant-stitch` task:
@@ -187,11 +186,12 @@ python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-
 ```
 </details>
 
+
 ## Pretrained Checkpoints
 
-Official GAS checkpoints are available on our [HuggingFace page](https://huggingface.co/qortmdgh4141/GAS) 🤗:
+Official GAS checkpoints are available on our 🤗 [HuggingFace page](https://huggingface.co/qortmdgh4141/GAS).
 
-For each released environment, we provide a `keygraph.pkl` (TD-aware graph) and a `params_*.pkl` (TDR, value/critic, and low-level policy).
+For each released environment, we provide a `keygraph.pkl` (TD-aware Graph) and a `params_*.pkl` (TDR, Value/Critic, and Low-level Policy).
 
 | Environment | Graph | Policy |
 | --- | --- | --- |
@@ -201,27 +201,30 @@ For each released environment, we provide a `keygraph.pkl` (TD-aware graph) and 
 | scene-play             | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/keygraph.pkl)            | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/params_1000000.pkl) 
 | kitchen-partial        | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/keygraph.pkl)       | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/params_500000.pkl) |
 
+Alternatively, you can download programmatically via the Hugging Face Hub:
 
-**Programmatic download (Python):**
-```python
-from huggingface_hub import hf_hub_download
+<details>
+<summary><b>Click to expand programmatic download</b></summary>
 
-repo = "qortmdgh4141/GAS"
-files = [
-    "antmaze-giant-navigate/params_1000000.pkl",
-    "antmaze-giant-navigate/keygraph.pkl",
-    "antmaze-giant-stitch/params_1000000.pkl",
-    "antmaze-giant-stitch/keygraph.pkl",
-    "antmaze-large-explore/params_1000000.pkl",
-    "antmaze-large-explore/keygraph.pkl",
-    "kitchen-partial/params_500000.pkl",
-    "kitchen-partial/keygraph.pkl",
-    "scene-play/params_1000000.pkl",
-    "scene-play/keygraph.pkl",
-]
-for f in files:
-    hf_hub_download(repo_id=repo, filename=f, local_dir="checkpoints")
-```  
+```bash
+pip install huggingface_hub
+```
+
+```bash
+import os
+from huggingface_hub import snapshot_download
+
+ckpt_dir = "checkpoints"
+os.makedirs(ckpt_dir, exist_ok=True)
+
+# Keep only the environments you want
+envs = ["antmaze-giant-navigate", "antmaze-giant-stitch", "antmaze-large-explore", "scene-play", "kitchen-partial",] 
+allow = [f"{e}/*" for e in envs]
+
+snapshot_download(repo_id="qortmdgh4141/GAS", local_dir=ckpt_dir, allow_patterns=allow,)
+```
+</details>
+
 
 ## Acknowledgments
 This codebase is inspired by or partly uses code from the following repositories:
