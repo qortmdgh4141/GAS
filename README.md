@@ -45,7 +45,6 @@ pip install -e .
 </a>
 
 We provide a Colab notebook for running pretrained GAS and visualizing trajectories.  
-This is the most convenient way to try GAS without local installation.
 
 In the notebook, modify only the environment and task ID (see code block below):
 ```python
