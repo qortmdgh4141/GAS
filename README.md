@@ -3,7 +3,7 @@
 <p align="left">
   <a href="https://www.arxiv.org/abs/2506.07744"><img src="https://img.shields.io/badge/Paper-arXiv-blueviolet?style=for-the-badge&logo=arxiv&logoColor=white"></a>
   <a href="https://qortmdgh4141.github.io/projects/GAS/"><img src="https://img.shields.io/badge/Project%20Page-Website-blueviolet?style=for-the-badge&logo=rocket&logoColor=white"></a>
-  <a href="https://www.youtube.com/watch?v=6mxRlbn2_6s"><img src="https://img.shields.io/badge/Talk%20(10min)-YouTube-blueviolet?style=for-the-badge&logo=youtube"></a>
+  <a href="https://www.youtube.com/watch?v=6mxRlbn2_6s"><img src="https://img.shields.io/badge/Talk%20(10min)-YouTube-blueviolet?style=for-the-badge&logo=youtube"></a>  
 </p>
 
 :bell: We are happy to announce that GAS was accepted at **ICML 2025**. :bell:
@@ -39,8 +39,29 @@ git clone https://github.com/Farama-Foundation/d4rl.git
 cd d4rl
 pip install -e .
 ```
+## Quick Start
+<a href="https://colab.research.google.com/github/qortmdgh4141/GAS/blob/main/GAS_demo.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
 
-## Quick start
+We provide a [Colab notebook](https://colab.research.google.com/github/qortmdgh4141/GAS/blob/main/GAS_demo.ipynb) for running pretrained GAS and visualizing trajectories.  
+This is the most convenient way to try GAS without local installation.
+
+In the notebook, modify only the environment and task ID (see code block below):
+```python
+# Select the environment.
+ENV_NAME_LIST = ["antmaze-giant-navigate-v0", "antmaze-giant-stitch-v0", "antmaze-large-explore-v0", "scene-play-v0",
+                 "visual-antmaze-giant-navigate-v0", "visual-antmaze-giant-stitch-v0", "visual-antmaze-large-explore-v0", "visual-scene-play-v0",]
+ENV_NAME = ENV_NAME_LIST[0]  # Change the index to select the desired environment 🌍
+
+# Select the task ID.
+TASK_ID_LIST = [1, 2, 3, 4, 5]
+TASK_ID = TASK_ID_LIST[0]  # Change the index to select the desired task 🎯
+```
+The notebook loads pretrained checkpoints from our HuggingFace repository, runs evaluation, and visualizes trajectories as videos:
+
+
+## Training and Evaluation
 
 The default hyperparameters in the code are set based on the `antmaze-giant-stitch` task:
 
@@ -189,7 +210,7 @@ python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-
 
 ## Pretrained Checkpoints
 
-Official GAS checkpoints are available on our 🤗 [HuggingFace page](https://huggingface.co/qortmdgh4141/GAS).
+Official GAS checkpoints are available on our 🤗 [HuggingFace repository](https://huggingface.co/qortmdgh4141/GAS).
 
 For each released environment, we provide a `keygraph.pkl` (TD-aware Graph) and a `params_*.pkl` (TDR, Value/Critic, and Low-level Policy).
 
@@ -229,7 +250,7 @@ snapshot_download(repo_id="qortmdgh4141/GAS", local_dir=ckpt_dir, allow_patterns
 ## Acknowledgments
 This codebase is inspired by or partly uses code from the following repositories:
 - [D4RL](https://github.com/Farama-Foundation/D4RL) for the dataset structure and the kitchen environment.
-- [OGBench](https://github.com/Farama-Foundation/D4RL) for the dataset structure and the antmaze, scene environments.
+- [OGBench](https://github.com/seohongpark/ogbench) for the dataset structure and the antmaze, scene environments.
 - [HIQL](https://github.com/seohongpark/HIQL) and [HILP](https://github.com/seohongpark/HILP) for JAX-based implementations of RL algorithms.
 
 Special thanks to [Seohong Park](https://seohong.me/) for providing a JAX-based Hierarchical HILP implementation and for helpful discussions.
