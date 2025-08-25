@@ -212,7 +212,7 @@ python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-
 
 Official GAS checkpoints are available on our 🤗 [HuggingFace repository](https://huggingface.co/qortmdgh4141/GAS).
 
-For each released environment, we provide a `keygraph.pkl` (TD-aware Graph) and a `params_*.pkl` (TDR, Value/Critic, and Low-level Policy).
+We provide a `keygraph.pkl` (TD-aware Graph) and a `params_*.pkl` (TDR, Value/Critic, and Low-level Policy).
 
 | Environment | Graph | Policy |
 | --- | --- | --- |
