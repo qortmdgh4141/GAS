@@ -58,7 +58,7 @@ ENV_NAME = ENV_NAME_LIST[0]  # Change the index to select the desired environmen
 TASK_ID_LIST = [1, 2, 3, 4, 5]
 TASK_ID = TASK_ID_LIST[0]  # Change the index to select the desired task 🎯
 ```
-The notebook loads pretrained checkpoints from our HuggingFace repository, runs evaluation, and visualizes trajectories as videos:
+The notebook loads pretrained checkpoints, runs evaluation, and visualizes trajectories as videos:
 
 
 ## Training and Evaluation
