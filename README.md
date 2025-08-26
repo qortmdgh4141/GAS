@@ -55,7 +55,7 @@ ENV_NAME = ENV_NAME_LIST[0]  # Change the index to select the desired environmen
 TASK_ID_LIST = [1, 2, 3, 4, 5]
 TASK_ID = TASK_ID_LIST[0]  # Change the index to select the desired task 🎯
 ```
-The following videos are example trajectories from pretrained GAS checkpoints:
+The following demos are example trajectories from pretrained GAS checkpoints:
 <details>
 <summary>AntMaze Demo</summary>
 <img src="demo/media/antmaze-demo.gif" width="720">  
