@@ -62,6 +62,45 @@ TASK_ID = TASK_ID_LIST[0]  # Change the index to select the desired task 🎯
 The notebook loads pretrained checkpoints, runs evaluation, and visualizes trajectories as videos:
 
 
+## Pretrained Checkpoints
+
+Official GAS checkpoints are available on our 🤗 [HuggingFace repository](https://huggingface.co/qortmdgh4141/GAS).
+
+We provide a `keygraph.pkl` (TD-aware Graph) and a `params_*.pkl` (TDR, Value/Critic, and Low-level Policy).
+
+| Environment | Graph | Policy |
+| --- | --- | --- |
+| antmaze-giant-navigate | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/keygraph.pkl) | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/params_1000000.pkl) |
+| antmaze-giant-stitch   | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/keygraph.pkl)   | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/params_1000000.pkl) |
+| antmaze-large-explore  | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/keygraph.pkl) | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/params_1000000.pkl) |
+| scene-play             | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/keygraph.pkl)            | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/params_1000000.pkl) 
+| kitchen-partial        | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/keygraph.pkl)       | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/params_500000.pkl) |
+
+Alternatively, you can download programmatically via the Hugging Face Hub:
+
+<details>
+<summary><b>Click to expand programmatic download</b></summary>
+
+```bash
+pip install huggingface_hub
+```
+
+```bash
+import os
+from huggingface_hub import snapshot_download
+
+ckpt_dir = "checkpoints"
+os.makedirs(ckpt_dir, exist_ok=True)
+
+# Keep only the environments you want
+envs = ["antmaze-giant-navigate", "antmaze-giant-stitch", "antmaze-large-explore", "scene-play", "kitchen-partial",] 
+allow = [f"{e}/*" for e in envs]
+
+snapshot_download(repo_id="qortmdgh4141/GAS", local_dir=ckpt_dir, allow_patterns=allow,)
+```
+</details>
+
+
 ## Training and Evaluation
 
 The default hyperparameters in the code are set based on the `antmaze-giant-stitch` task:
@@ -205,45 +244,6 @@ python pretrain_tdr.py --run_tdr_project EXP_tdr --run_group EXP_visual-scene-pl
 python construct_graph.py --run_group EXP_visual-scene-play --env_name visual-scene-play-v0 --seed 0 --gpu 0 --save_graph_dir EXP_graph/ --te_threshold 0.9 --tdr_path PATH_TO_TDR_CHECKPOINT/params_500000.pkl --agent_config.encoder impala_small --agent_config.discount 0.99 --agent_config.tdr_expectile 0.95 --agent_config.alpha 1.0 --agent_config.batch_size 256 --agent_config.p_aug 0.5 --agent_config.way_steps 24
 python train_policy.py --run_policy_project EXP_policy --run_group EXP_visual-scene-play --env_name visual-scene-play-v0 --seed 0 --gpu 0 --save_policy_dir EXP_policy/ --train_steps 500000 --log_interval 5000 --save_interval 100000 --tdr_path PATH_TO_TDR_CHECKPOINT/params_500000.pkl --agent_config.encoder impala_small --agent_config.discount 0.99 --agent_config.tdr_expectile 0.95 --agent_config.alpha 1.0 --agent_config.batch_size 256 --agent_config.p_aug 0.5 --agent_config.way_steps 24
 python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-play --env_name visual-scene-play-v0 --seed 0 --gpu 0 --save_eval_dir EXP_eval/ --eval_on_cpu 0 --eval_episodes 49 --eval_video_episodes 1 --eval_final_goal_threshold 2 --keygraph_path PATH_TO_KEYGRAPH_CHECKPOINT/keygraph.pkl --policy_path PATH_TO_POLICY_CHECKPOINT/params_500000.pkl --agent_config.encoder impala_small --agent_config.discount 0.99 --agent_config.tdr_expectile 0.95 --agent_config.alpha 1.0 --agent_config.batch_size 256 --agent_config.p_aug 0.5 --agent_config.way_steps 24
-```
-</details>
-
-
-## Pretrained Checkpoints
-
-Official GAS checkpoints are available on our 🤗 [HuggingFace repository](https://huggingface.co/qortmdgh4141/GAS).
-
-We provide a `keygraph.pkl` (TD-aware Graph) and a `params_*.pkl` (TDR, Value/Critic, and Low-level Policy).
-
-| Environment | Graph | Policy |
-| --- | --- | --- |
-| antmaze-giant-navigate | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/keygraph.pkl) | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/params_1000000.pkl) |
-| antmaze-giant-stitch   | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/keygraph.pkl)   | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/params_1000000.pkl) |
-| antmaze-large-explore  | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/keygraph.pkl) | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/params_1000000.pkl) |
-| scene-play             | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/keygraph.pkl)            | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/params_1000000.pkl) 
-| kitchen-partial        | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/keygraph.pkl)       | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/params_500000.pkl) |
-
-Alternatively, you can download programmatically via the Hugging Face Hub:
-
-<details>
-<summary><b>Click to expand programmatic download</b></summary>
-
-```bash
-pip install huggingface_hub
-```
-
-```bash
-import os
-from huggingface_hub import snapshot_download
-
-ckpt_dir = "checkpoints"
-os.makedirs(ckpt_dir, exist_ok=True)
-
-# Keep only the environments you want
-envs = ["antmaze-giant-navigate", "antmaze-giant-stitch", "antmaze-large-explore", "scene-play", "kitchen-partial",] 
-allow = [f"{e}/*" for e in envs]
-
-snapshot_download(repo_id="qortmdgh4141/GAS", local_dir=ckpt_dir, allow_patterns=allow,)
 ```
 </details>
 
