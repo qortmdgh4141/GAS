@@ -55,8 +55,21 @@ ENV_NAME = ENV_NAME_LIST[0]  # Change the index to select the desired environmen
 TASK_ID_LIST = [1, 2, 3, 4, 5]
 TASK_ID = TASK_ID_LIST[0]  # Change the index to select the desired task 🎯
 ```
-The notebook loads pretrained checkpoints, runs evaluation, and visualizes trajectories as videos:  
-➡ [AntMaze Demo](demo/media/antmaze-demo.mp4) | [Kitchen Demo](demo/media/kitchen-demo.mp4) | [Scene Demo](demo/media/scene-demo.mp4)
+The following videos are example trajectories from pretrained GAS checkpoints:
+<details>
+<summary>AntMaze Demo</summary>
+<img src="demo/media/antmaze-demo.gif" width="720">  
+</details>
+
+<details>
+<summary>Kitchen Demo</summary>
+<img src="demo/media/kitchen-demo.gif" width="480">  
+</details>
+
+<details>
+<summary>Scene Demo</summary>
+<img src="demo/media/scene-demo.gif" width="480">  
+</details>
 
 
 ## Pretrained Checkpoints
