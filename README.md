@@ -39,6 +39,8 @@ git clone https://github.com/Farama-Foundation/d4rl.git
 cd d4rl
 pip install -e .
 ```
+
+
 ## Quick Start
 <a href="https://colab.research.google.com/github/qortmdgh4141/GAS/blob/main/GAS_demo.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
@@ -243,6 +245,40 @@ allow = [f"{e}/*" for e in envs]
 
 snapshot_download(repo_id="qortmdgh4141/GAS", local_dir=ckpt_dir, allow_patterns=allow,)
 ```
+</details>
+
+
+## Repository Structure
+High-level overview of the file-tree:
+
+<details>
+<summary><b>Utilities</b></summary>
+
++ `D_utils/` - D4RL utilities (kitchen environment)  
++ `K_utils/` - Keygraph utilities (TD-aware graph)  
++ `M_utils/` - Model utilities (TDR, value/critic, low-level policy)  
++ `O_utils/` - Offline RL utilities (antmaze/scene environments, dataset, evaluation, logging)  
+
+</details>
+
+<details>
+<summary><b>Main scripts</b></summary>
+
++ `pretrain_tdr.py`     - Stage 1: Pre-Training Temporal Distance Representation  
++ `construct_graph.py`  - Stage 2: TD-aware Graph Construction  
++ `train_policy.py`     - Stage 3: Learning Low-level Policy  
++ `evaluate_gas.py`     - Stage 4: Task Planning and Execution  
+
+</details>
+
+<details>
+<summary><b>Others</b></summary>
+
++ `GAS_demo.ipynb`      - Colab demo  
++ `requirements.txt`    - Python dependencies  
++ `LICENSE`             - MIT License  
++ `README.md`           - You are here!  
+
 </details>
 
 
