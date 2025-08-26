@@ -68,13 +68,22 @@ Official GAS checkpoints are available on our 🤗 [HuggingFace repository](http
 
 We provide a `keygraph.pkl` (TD-aware Graph) and a `params_*.pkl` (TDR, Value/Critic, and Low-level Policy).
 
+#### State-based Environments
 | Environment | Graph | Policy |
 | --- | --- | --- |
 | antmaze-giant-navigate | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/keygraph.pkl) | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-navigate/params_1000000.pkl) |
 | antmaze-giant-stitch   | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/keygraph.pkl)   | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-giant-stitch/params_1000000.pkl) |
 | antmaze-large-explore  | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/keygraph.pkl) | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/antmaze-large-explore/params_1000000.pkl) |
-| scene-play             | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/keygraph.pkl)            | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/params_1000000.pkl) 
+| scene-play             | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/keygraph.pkl)            | [params_1000000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/scene-play/params_1000000.pkl) |
 | kitchen-partial        | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/keygraph.pkl)       | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/kitchen-partial/params_500000.pkl) |
+
+#### Pixel-based Environments
+| Environment | Graph | Policy |
+| --- | --- | --- |
+| visual-antmaze-giant-navigate | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/visual-antmaze-giant-navigate/keygraph.pkl) | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/visual-antmaze-giant-navigate/params_500000.pkl) |
+| visual-antmaze-giant-stitch | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/visual-antmaze-giant-stitch/keygraph.pkl)   | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/visual-antmaze-giant-stitch/params_500000.pkl) |
+| visual-antmaze-large-explore | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/visual-scene-play/keygraph.pkl)             | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/visual-scene-play/params_500000.pkl) |
+| visual-scene-play | [keygraph.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/visual-scene-play/keygraph.pkl)             | [params_500000.pkl](https://huggingface.co/qortmdgh4141/GAS/resolve/main/visual-scene-play/params_500000.pkl) |
 
 Alternatively, you can download programmatically via the Hugging Face Hub:
 
