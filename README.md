@@ -40,13 +40,9 @@ cd d4rl
 pip install -e .
 ```
 
-
 ## Quick Start
-<a href="https://colab.research.google.com/github/qortmdgh4141/GAS/blob/main/GAS_demo.ipynb">
-  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>
 
-We provide a [Colab notebook](https://colab.research.google.com/github/qortmdgh4141/GAS/blob/main/GAS_demo.ipynb) notebook for running pretrained GAS and visualizing trajectories.  
+We provide a 🚀[Colab notebook](https://colab.research.google.com/github/qortmdgh4141/GAS/blob/main/GAS_demo.ipynb) notebook for running pretrained GAS and visualizing trajectories.  
 
 In the notebook, modify only the environment and task ID:
 ```python
@@ -64,7 +60,7 @@ The notebook loads pretrained checkpoints, runs evaluation, and visualizes traje
 
 ## Pretrained Checkpoints
 
-Official GAS checkpoints are available on our 🤗 [HuggingFace repository](https://huggingface.co/qortmdgh4141/GAS).
+Official GAS checkpoints are available on our 🤗[HuggingFace repository](https://huggingface.co/qortmdgh4141/GAS).
 
 We provide a `keygraph.pkl` (TD-aware Graph) and a `params_*.pkl` (TDR, Value/Critic, and Low-level Policy).
 
@@ -258,6 +254,7 @@ python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-
 
 
 ## Repository Structure
+
 High-level overview of the file-tree:
 
 <details>
@@ -292,6 +289,7 @@ High-level overview of the file-tree:
 
 
 ## Acknowledgments
+
 This codebase is inspired by or partly uses code from the following repositories:
 - [D4RL](https://github.com/Farama-Foundation/D4RL) for the dataset structure and the kitchen environment.
 - [OGBench](https://github.com/seohongpark/ogbench) for the dataset structure and the antmaze, scene environments.
@@ -301,6 +299,7 @@ Special thanks to [Seohong Park](https://seohong.me/) for providing a JAX-based 
 
 
 ## Citation
+
 ```bibtex
 @inproceedings{gas_baek2025,
     title={Graph-Assisted Stitching for Offline Hierarchical Reinforcement Learning},
