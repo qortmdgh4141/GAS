@@ -46,7 +46,7 @@ pip install -e .
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
-We provide a Colab notebook for running pretrained GAS and visualizing trajectories.  
+We provide a [Colab notebook](https://colab.research.google.com/github/qortmdgh4141/GAS/blob/main/GAS_demo.ipynb) notebook for running pretrained GAS and visualizing trajectories.  
 
 In the notebook, modify only the environment and task ID (see code block below):
 ```python
