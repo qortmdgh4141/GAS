@@ -48,7 +48,7 @@ pip install -e .
 
 We provide a [Colab notebook](https://colab.research.google.com/github/qortmdgh4141/GAS/blob/main/GAS_demo.ipynb) notebook for running pretrained GAS and visualizing trajectories.  
 
-In the notebook, modify only the environment and task ID (see code block below):
+In the notebook, modify only the environment and task ID:
 ```python
 # Select the environment.
 ENV_NAME_LIST = ["antmaze-giant-navigate-v0", "antmaze-giant-stitch-v0", "antmaze-large-explore-v0", "scene-play-v0",
