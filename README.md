@@ -309,7 +309,7 @@ This codebase is inspired by or partly uses code from the following repositories
 - [OGBench](https://github.com/seohongpark/ogbench) for the dataset structure and the antmaze, scene environments.
 - [HIQL](https://github.com/seohongpark/HIQL) and [HILP](https://github.com/seohongpark/HILP) for JAX-based implementations of RL algorithms.
 
-Special thanks to [Seohong Park](https://seohong.me/) for providing a JAX-based Hierarchical HILP implementation and for helpful discussions.
+Special thanks to [Seohong Park](https://seohong.me/) for providing a JAX-based HHILP implementation and for helpful discussions.
 
 
 ## Citation
