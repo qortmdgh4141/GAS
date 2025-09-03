@@ -269,7 +269,7 @@ def get_config():
             log_std_min=-5,                         # Minimum value of log standard deviation for the actor.
             log_std_max=2,                          # Maximum value of log standard deviation for the actor.
             final_fc_init_scale=1e-2,               # Initial scale of the final fully-connected layer for the actor. 
-            discount=0.99,                          # Discount factor.
+            discount=0.995,                         # Discount factor.
             tdr_expectile=0.999,                    # TDR expectile.
             expectile=0.7,                          # Value expectile.
             alpha=1.0,                              # Temperature in BC coefficient.
