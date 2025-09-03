@@ -155,7 +155,7 @@ class GASAgent(flax.struct.PyTreeNode):
                             'mse': jnp.mean((dist.mode() - batch['actions']) ** 2), 'std': jnp.mean(dist.scale_diag),}
 
     @jax.jit
-    def total_tdr_value_loss(self, batch, grad_params, rng=None):
+    def total_tdr_value_loss(self, batch, grad_params):
         """Compute the total TDR loss."""
         info = {}
 
@@ -180,8 +180,9 @@ class GASAgent(flax.struct.PyTreeNode):
         
         # value, critic
         batch_size, rep_dim = batch['phi_obs'].shape
-        random_skills = np.random.randn(batch_size, rep_dim)
-        batch['value_skills'] = random_skills / jnp.linalg.norm(random_skills, axis=1, keepdims=True)
+        random_skills = jax.random.normal(rng, (batch_size, rep_dim))
+        unnormalized_vg_norm = jnp.linalg.norm(random_skills, axis=1, keepdims=True) + epsilon
+        batch['value_skills'] = random_skills / unnormalized_vg_norm 
         batch['rewards'] = ((batch['phi_next_obs'] - batch['phi_obs']) * batch['value_skills']).sum(axis=1)
         batch['masks'] = jnp.ones(batch_size)
         value_loss, value_info = self.value_loss(batch, grad_params)
@@ -215,9 +216,8 @@ class GASAgent(flax.struct.PyTreeNode):
     def tdr_update(self, batch):
         """Update the TDR and return a new agent with information dictionary."""
         new_rng, rng = jax.random.split(self.rng)
-
         def tdr_loss_fn(grad_params):
-            return self.total_tdr_value_loss(batch, grad_params, rng=rng)
+            return self.total_tdr_value_loss(batch, grad_params)
         new_network, info = self.network.apply_loss_fn(loss_fn=tdr_loss_fn)
         
         self.target_update(new_network, 'tdr_value')
@@ -269,7 +269,7 @@ def get_config():
             log_std_min=-5,                         # Minimum value of log standard deviation for the actor.
             log_std_max=2,                          # Maximum value of log standard deviation for the actor.
             final_fc_init_scale=1e-2,               # Initial scale of the final fully-connected layer for the actor. 
-            discount=0.995,                         # Discount factor.
+            discount=0.99,                          # Discount factor.
             tdr_expectile=0.999,                    # TDR expectile.
             expectile=0.7,                          # Value expectile.
             alpha=1.0,                              # Temperature in BC coefficient.
