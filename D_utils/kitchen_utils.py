@@ -34,7 +34,7 @@ def kitchen_get_dataset(env):
         )
 
 
-def kitchen_set_obs_and_goal(env, env_name, dataset, task_id, seed):
+def kitchen_set_obs_and_goal(env, env_name, task_id, seed):
     """Set initial observation and final goal."""
     assert task_id == 1, f"Unsupported task_id: {task_id} for env_name: {env_name}. Only task_id=1 is supported."
     observation = env.reset(seed)
