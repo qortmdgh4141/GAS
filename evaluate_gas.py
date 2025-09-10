@@ -112,7 +112,7 @@ def main(_):
     overall_metrics = defaultdict(list)
     for task_id in tqdm(task_id_list, desc="Evaluating Tasks"):
         task_name = task_infos[task_id - 1]['task_name']
-        eval_info, cur_renders = evaluate_with_graph(agent, key_graph, env, FLAGS.env_name, train_gc_dataset.dataset, task_id, FLAGS.eval_episodes, FLAGS.eval_video_episodes, 
+        eval_info, cur_renders = evaluate_with_graph(agent, key_graph, env, FLAGS.env_name, task_id, FLAGS.eval_episodes, FLAGS.eval_video_episodes, 
                                                      FLAGS.seed, FLAGS.eval_on_cpu, config['way_steps'], FLAGS.eval_final_goal_threshold, config,)
         renders.extend(cur_renders)
         eval_metrics.update({f'eval/{task_name}_{k}': v for k, v in eval_info.items() if k in metric_names})
