@@ -8,7 +8,7 @@ from collections import defaultdict
 from D_utils.kitchen_utils import kitchen_set_obs_and_goal, kitchen_render
 
 
-def evaluate_with_graph(agent, key_graph, env, env_name, dataset, task_id, eval_episodes, eval_video_episodes, 
+def evaluate_with_graph(agent, key_graph, env, env_name, task_id, eval_episodes, eval_video_episodes, 
                         seed, eval_on_cpu, eval_subgoal_threshold, eval_final_goal_threshold, config):         
     """
     Evaluate the GAS in the environment.
@@ -32,7 +32,7 @@ def evaluate_with_graph(agent, key_graph, env, env_name, dataset, task_id, eval_
         render = []
         should_render = i >= eval_episodes
         eval_seed = seed + i  
-        env, observation, goal, reward, done, goal_rendered = setup_task_env(env, env_name, dataset, task_id, should_render, seed=eval_seed)
+        env, observation, goal, reward, done, goal_rendered = setup_task_env(env, env_name, task_id, should_render, seed=eval_seed)
         
         epsilon=1e-10
         phi_obs = np.array(get_phi_fn(observation))
@@ -87,10 +87,10 @@ def supply_rng(f, rng=jax.random.PRNGKey(0)):
     return wrapped
 
 
-def setup_task_env(env, env_name, dataset, task_id, should_render, seed):
+def setup_task_env(env, env_name, task_id, should_render, seed):
     """Reset the environment for a specific task."""
     if env_name in ['kitchen-partial-v0',]:
-        env, observation, goal = kitchen_set_obs_and_goal(env, env_name, dataset, task_id, seed=seed)
+        env, observation, goal = kitchen_set_obs_and_goal(env, env_name, task_id, seed=seed)
         goal_rendered = None
     else:
         observation, info = env.reset(seed=seed, options=dict(task_id=task_id, render_goal=should_render))
