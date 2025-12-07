@@ -268,9 +268,9 @@ python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-
 
 ## Additional Results
 
-We release additional experimental results on the `humanoidmaze-*` environments to facilitate future research. 
+We release additional results on the `humanoidmaze-*` environments to facilitate future research. 
 
-These experiments are not reported in the [ICML 2025 paper](https://arxiv.org/abs/2506.07744).
+These results are not reported in the [ICML 2025 paper](https://arxiv.org/abs/2506.07744).
 
 <details>
 <summary><b>Additional results on humanoidmaze environments</b></summary>
