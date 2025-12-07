@@ -266,13 +266,16 @@ python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-
 ```
 </details>
 
-## Additional Experimental Environments
+## Additional Results
 
-We provide the exact command-line flags for the `humanoidmaze-*` environments to facilitate future research. 
+We release additional experimental results for the `humanoidmaze-*` environments to facilitate future research. 
 
-These experiments are not reported in the ICML 2025 paper.
+These experiments are not reported in the [ICML 2025 paper](https://arxiv.org/abs/2506.07744).
 
-<img src="https://qortmdgh4141.github.io/projects/GAS/media/figures/humanoidmaze_additional_results_v2.png" width="50%">
+<details>
+<summary><b>Additional Experimental Results</b></summary>
+  <img src="https://qortmdgh4141.github.io/projects/GAS/media/figures/humanoidmaze_additional_results_v2.png" width="75%">
+</details>
 
 <details>
 <summary><b>Click to expand the full list of commands (state-based environments)</b></summary>
