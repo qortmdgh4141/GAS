@@ -272,7 +272,7 @@ We provide the exact command-line flags for the `humanoidmaze-*` environments to
 
 These experiments are not reported in the ICML 2025 paper.
 
-<img src="https://qortmdgh4141.github.io/projects/GAS/media/figures/humanoidmaze_additional_results_v1.png" width="75%">
+<img src="https://qortmdgh4141.github.io/projects/GAS/media/figures/humanoidmaze_additional_results_v2.png" width="50%">
 
 <details>
 <summary><b>Click to expand the full list of commands (state-based environments)</b></summary>
