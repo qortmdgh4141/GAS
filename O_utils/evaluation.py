@@ -9,17 +9,17 @@ from D_utils.kitchen_utils import kitchen_set_obs_and_goal, kitchen_render
 
 
 def evaluate_with_graph(agent, key_graph, env, env_name, task_id, eval_episodes, eval_video_episodes, 
-                        seed, eval_on_cpu, eval_subgoal_threshold, eval_final_goal_threshold, config):         
+                        seed, eval_on_cpu, eval_subgoal_threshold, eval_final_goal_threshold, config, recompute_paths_per_episode=False):         
     """
-    Evaluate the GAS in the environment.
-    In OGbench environments, the final goal includes slight random noise per episode.
-    Empirically, we found little to no performance difference between:
-    (1) Recomputing the shortest path every episode
-    (2) Reusing a precomputed path for the same task_id
-
-    The function `evaluate_with_graph()` follows (2) by computing the shortest path once via `precompute_shortest_paths_to_all_tasks()` 
-    When using (2), we recommend setting `eval_final_goal_threshold >= 2` to allow agents to reach slightly perturbed final goals.
-    If final goals vary significantly per episode, or if GAS is extended to online RL, strategy (1) is preferred.
+    Evaluate GAS in the environment.
+    In OGBench environments, the final goal includes slight random noise in each episode.
+    Empirically, we found little to no performance difference between two strategies:
+    (1) recomputing the shortest path every episode
+    (2) reusing a precomputed path for the same task_id
+    
+    By default, evaluate_with_graph() uses strategy (2), computing the shortest path once via precompute_shortest_paths_to_all_tasks().
+    When using strategy (2), we recommend setting eval_final_goal_threshold >= 2 to allow agents to reach slightly perturbed final goals.
+    If final goals vary significantly across episodes, or if GAS is extended to online RL, we recommend setting recompute_paths_per_episode=True to use strategy (1).
     """
     eval_agent = jax.device_put(agent, device=jax.devices('cpu')[0]) if eval_on_cpu else agent
     get_phi_fn = eval_agent.get_phi         
@@ -38,18 +38,18 @@ def evaluate_with_graph(agent, key_graph, env, env_name, task_id, eval_episodes,
         phi_obs = np.array(get_phi_fn(observation))
         phi_goal = np.array(get_phi_fn(goal))
         final_goal_on = False
+        # Optionally, recompute the shortest path every episode (strategy (1))
+        if recompute_paths_per_episode:
+            key_graph.precompute_shortest_paths_to_all_tasks({task_id: goal}, {task_id: phi_goal},)
         shortest_path = key_graph.get_shortest_path(task_id=task_id, source=phi_obs, force_closest=True)
         while not done:
             phi_obs = np.array(get_phi_fn(observation))
-            if final_goal_on==True:
+            if final_goal_on:
                 cur_obs_goal = phi_goal
             else:
                 cached_shortest_path = key_graph.get_shortest_path(task_id=task_id, source=phi_obs)
-                if cached_shortest_path is None:
-                    pass
-                else:
-                    shortest_path = cached_shortest_path
-  
+                if cached_shortest_path is not None:
+                    shortest_path = cached_shortest_path  
                 distances = np.linalg.norm(np.array(shortest_path) - phi_obs, axis=1) 
                 valid_indices = np.where(distances <= eval_subgoal_threshold)[0]  
                 cur_node_idx = valid_indices[-1] if len(valid_indices) > 0 else 0         
@@ -58,12 +58,12 @@ def evaluate_with_graph(agent, key_graph, env, env_name, task_id, eval_episodes,
                     cur_obs_goal = phi_goal
                 else:
                     cur_obs_goal = shortest_path[cur_node_idx]
-        
-            skills = (cur_obs_goal - phi_obs) / (np.linalg.norm(cur_obs_goal - phi_obs) + epsilon)                    
+                  
+            skills = (cur_obs_goal - phi_obs) / (np.linalg.norm(cur_obs_goal - phi_obs) + epsilon)  
             action = actor_fn(observations=observation, goals=skills, temperature=0.0)
             action = np.clip(np.array(action), -1, 1)
-            next_observation, reward, done, info = env_step(env, env_name, action)
-            
+            next_observation, reward, done, info = env_step(env, env_name, action)  
+          
             step += 1
             if should_render and (step % 3 == 0 or done):
                 frame = get_frame(env, env_name)
