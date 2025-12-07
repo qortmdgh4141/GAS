@@ -270,7 +270,7 @@ python evaluate_gas.py --run_eval_project EXP_eval --run_group EXP_visual-scene-
 
 We provide the exact command-line flags for the `humanoidmaze-*` environments to facilitate future research. 
 
-These experiments are not reported in the **ICML 2025 paper**.
+These experiments are not reported in the ICML 2025 paper.
 
 <details>
 <summary><b>Click to expand the full list of commands (state-based environments)</b></summary>
