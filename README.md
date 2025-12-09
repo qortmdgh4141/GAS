@@ -274,7 +274,7 @@ These results are not reported in the [ICML 2025 paper](https://arxiv.org/abs/25
 
 <details>
 <summary><b>Additional results on humanoidmaze environments</b></summary>
-<img src="https://github.com/qortmdgh4141/projects/raw/main/GAS/media/figures/humanoidmaze_additional_results_v3.png" width="100%" alt="additional humanoidmaze results">
+<img src="https://github.com/qortmdgh4141/projects/raw/main/GAS/media/figures/humanoidmaze_additional_results_v3.png" width="75%" alt="additional humanoidmaze results">
 </details>
 
 <details>
